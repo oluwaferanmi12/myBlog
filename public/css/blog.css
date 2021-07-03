@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+
+:root{
+    --vibes: 'Great Vibes',cursive;
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    /* height: 100%;
+    width: 100%; */
+}
+
+.landing-background{
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url('../landing_images/DSC_7662.JPG');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+
+}
+
+.landing-nav{
+    display: flex;
+    padding: 20px 50px;
+    color: white;
+}
+
+.landing-nav ul{
+    list-style-type: none;
+    display: flex;
+    
+}
+
+.landing-nav ul li a{
+    text-decoration: none;
+    padding: 12px 20px ;
+    color: white;
+    font-family: var(--vibes);
+    font-size: 24px;
+    letter-spacing: 2px;
+    
+}
+
+.landing-nav ul li .active_nav{
+    border-bottom: 1px solid #FF1493;
+}
+
+.seperator{
+    flex: 1;
+}

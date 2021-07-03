@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function(){
-    return redirect('/posts');
-});
+Route::get('/', 'App\Http\Controllers\LandingController@index');
 
 Route::resource('/posts' , 'App\Http\Controllers\PostsController' );
 Auth::routes();
