@@ -6,15 +6,17 @@
             <div class="col-8">
                 <h1>{{$post->title}}</h1>
 
-                <div class="index-img-container">
-                        <img class="theImg" src="{{$post->path}}" alt="" srcset="">
+                <div class="index-img-container" style="height: 400px">
+                        <img style="height: 100%; width:90%" class="theImg" src="{{$post->path}}" alt="" srcset="">
                 </div>
+
+
 
                 <p>{!! $post->body !!}</p>
 
                 {{-- Comment Section --}}
                 
-
+                <div class="addthis_inline_share_toolbox"></div>
                 <div class="show-comments">
                     <h3>Comments Section</h3>
                     @foreach ($comments as $comment)
@@ -71,7 +73,7 @@
                 <h3>Recent Blog Posts(5)</h3>
 
                     @foreach ($allPosts as $recent)
-                        <div class="index-img-container">
+                        <div class="index-img-container" >
                             <img src="{{$recent->path}}" alt="" srcset="">
                         </div>
 

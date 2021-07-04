@@ -28,6 +28,7 @@ class PostsController extends Controller
     {
         //
         $post = Post::orderBy('id' , 'desc')->limit(5)->get();
+        
 
         $recents =Post::orderBy('id' , 'desc')->limit(5)->get();
         return view('posts.index' , compact('post' , 'recents'));
@@ -63,9 +64,7 @@ class PostsController extends Controller
         $theFile->move('images' , $file_name);
         $thePost = Post::create($post);
         $user->posts()->save($thePost);
-        
-        
-
+        event(new NewCustomerHasRegistered($user));
         return redirect('posts');
         
 

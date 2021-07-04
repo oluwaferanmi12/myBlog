@@ -73,7 +73,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  /* background-color: rgba(232, 193, 197, 0.2); */
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -4547,10 +4547,14 @@ input[type=button].btn-block {
 
 .navbar-nav {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  
+  width: 40%;
 }
 
 .navbar-nav .nav-link {
@@ -11008,3 +11012,9 @@ a.text-dark:focus {
 .auth-Form{
   display: inline;
 }
+
+.nav-social{
+  padding-top: 10px;
+
+}
+

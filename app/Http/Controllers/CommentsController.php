@@ -42,7 +42,7 @@ class CommentsController extends Controller
         $post_id = $input['post_id'];
         $post = Post::findOrFail($post_id);
         $comment = Comment::create($input);
-        $post->comments()->save($comment);
+        // $post->comments()->save($comment);
         
         
         return redirect('posts/'.$post_id);
