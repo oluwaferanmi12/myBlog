@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
@@ -54,6 +55,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
+        
         $user_id = auth()->user()->id;
         $user = User::findOrFail($user_id);
         $post = $request->all();
@@ -61,10 +63,10 @@ class PostsController extends Controller
         $theFile = $request->file('file');
         $file_name = $request -> file('file')->getClientOriginalName();
         $post['path']=$file_name;
+        $post['slug'] = SlugService::createSlug(Post::class, 'slug' , $request->title);
         $theFile->move('images' , $file_name);
         $thePost = Post::create($post);
         $user->posts()->save($thePost);
-        event(new NewCustomerHasRegistered($user));
         return redirect('posts');
         
 
@@ -77,11 +79,13 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
         $allPosts =Post::orderBy('id' , 'desc')->limit(10)->get();
-        $post = Post::findOrFail($id);
+        
+        $post = Post::where('slug' , $slug)->first();
+        
         $comments = $post->comments()->orderBy('id' , 'desc')->get();
         
         return view('posts.show' , compact('post' , 'allPosts' , 'comments'));

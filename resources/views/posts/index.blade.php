@@ -17,15 +17,22 @@
                     <p style="padding-bottom:0px; margin-bottom:0px; color:red;"> Posted {{$posts->created_at->diffForHumans()}}</p>
                     <div style="font-weight:normal; color:green; padding-bottom:12px; ">By {{$posts->user->name}} </div>
                         
-                    <a href="{{route('posts.show', $posts->id)}}">
+                        <a href="{{route('posts.show', $posts->slug)}}">
+                            <div class="btn btn-primary">
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                            Read More
+                            </div>
+                        </a>
+
+                    {{-- <form action="{{route('posts.show' , $posts->title)}}" method="GET">
+                        
                         <div class="btn btn-primary">
-                            
-                <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                
-            
-                        Read More
+                            <input type="hidden" name="id" value="{{$posts->id}}">
+                            <input type="hidden" name="title" ,value="{{$posts->title}}">
+                            <input type="submit" value="Read More">
                         </div>
-                    </a>
+
+                    </form> --}}
                         &nbsp; &nbsp; 
                     <span>{{$posts->comments()->count()}} Comments</span>
                     <hr>
