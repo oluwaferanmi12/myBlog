@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-8">
+            <div class="col-lg-8 col-sm-12 col-xs-12">
                 <h1>{{$post->title}}</h1>
 
                 <div class="index-img-container" style="height: 400px">
@@ -69,12 +69,12 @@
                 
             </div>
 
-            <div class="col-4">
-                <h3>Recent Blog Posts(5)</h3>
+            <div class="col-lg-4 col-sm-12 col-xs-12">
+                <h3>Recent Blog Posts</h3>
 
                     @foreach ($allPosts as $recent)
-                        <div class="index-img-container" >
-                            <img src="{{$recent->path}}" alt="" srcset="">
+                        <div class="index-img-container" style="height: 200px"  >
+                            <img src="{{$recent->path}}" alt="" srcset="" style="height: 100%; width:100%">
                         </div>
 
                         <h3 style="padding-bottom: 30px"><a style='color:black; text-decoration:none;' href="{{route('posts.show' , $recent->id)}}">{{$recent->title}} </a>  </h3>
