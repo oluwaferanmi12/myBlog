@@ -18,7 +18,7 @@
                 
                 <div class="addthis_inline_share_toolbox"></div>
                 <div class="show-comments">
-                    <h3>Comments Section</h3>
+                    <h3>Comments Section.</h3>
                     @foreach ($comments as $comment)
                         <div class="comment-detail">
                             
