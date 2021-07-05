@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
         <div class="row">
 
@@ -14,8 +15,9 @@
                     </div>
                     <h3><a style='color:black; text-decoration:none; font-weight:bold' href="{{route('posts.show' , $posts->id)}}">{{$posts->title}} </a>  </h3> 
                     <p>{{ substr(strip_tags($posts->body) , 0, 300) }} ...</p>
-                    <p style="padding-bottom:0px; margin-bottom:0px; color:red;"> Posted {{$posts->created_at->diffForHumans()}}</p>
-                    <div style="font-weight:normal; color:green; padding-bottom:12px; ">By {{$posts->user->name}} </div>
+                    <p style="padding-bottom:0px; margin-bottom:0px;">
+                        <i class="far fa-clock"></i>  Posted {{$posts->created_at->diffForHumans()}}</p>
+                    <div style="font-weight:normal; color:green; padding-bottom:12px; "><span style="color: black;"><i class="far fa-user"></i></span> By {{$posts->user->name}} </div>
                         
                         <a href="{{route('posts.show', $posts->slug)}}">
                             <div class="btn btn-primary">
@@ -34,7 +36,17 @@
 
                     </form> --}}
                         &nbsp; &nbsp; 
-                    <span>{{$posts->comments()->count()}} Comments</span>
+                    <span>
+                        
+                        {{$no_of_comment = $posts->comments()->count()}} 
+
+                        @if ($no_of_comment <= 1 )
+                            Comment
+                        @else
+                            Comments
+                        @endif
+                    
+                    </span>
                     <hr>
                 </div>
             @endforeach

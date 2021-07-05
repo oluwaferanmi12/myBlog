@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Oswald:wght@600&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
 
@@ -9,6 +10,10 @@
  */
 
 :root {
+  --oswald : 'Oswald',
+  sans-serif;
+  --nunito : 'Nunito',
+  sans-serif;
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
@@ -10952,6 +10957,24 @@ a.text-dark:focus {
   margin-bottom:20px;
 }
 
+@media(max-width:600px){
+  .index-img-container{
+    height: 250px !important;
+  }
+
+  .post_title{
+    font-size:24px;
+  }
+
+  .recent_title{
+    padding-top:25px;
+  }
+
+  
+
+
+}
+
 .index-img-container img{
   width: 100%;
   border-radius: 12px;
@@ -10983,13 +11006,22 @@ a.text-dark:focus {
   /* border: 1px solid red; */
   width: 100%;
   font-weight: 500;
+  padding: 0px 0px 12px 0px !important;
+  font-family: var(--nunito);
+}
+
+.avatar_img{
+  padding-right: 10px;
+  padding-top:12px;
+  padding-bottom:12px;
 }
 
 .theTime{
   font-size: 10px;
-  position: absolute;
+  padding: 0px !important;
+  /* position: absolute;
   bottom: -6px;
-  right: 0px;
+  right: 0px; */
 }
 
 .enter-comment{
@@ -10998,6 +11030,8 @@ a.text-dark:focus {
 
 .theEmail{
   font-size: 12px;
+  font-weight:bold;
+  color: rgb(56, 56, 56);
 }
 
 .user-action{
@@ -11017,4 +11051,11 @@ a.text-dark:focus {
   padding-top: 10px;
 
 }
+
+
+.avatar_container{
+  display:flex;
+}
+
+
 

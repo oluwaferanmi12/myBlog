@@ -39,13 +39,13 @@ class CommentsController extends Controller
     {
         //
         $input = $request->all();
-        $post_id = $input['post_id'];
-        $post = Post::findOrFail($post_id);
+        $post_slug = $input['post_slug'];
+        $post = Post::where('slug', $post_slug)->first();
         $comment = Comment::create($input);
         // $post->comments()->save($comment);
         
         
-        return redirect('posts/'.$post_id);
+        return redirect('posts/'.$post_slug);
 
         
     }

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-sm-12 col-xs-12">
-                <h1>{{$post->title}}</h1>
+                <h1 class="post_title">{{$post->title}}</h1>
 
                 <div class="index-img-container" style="height: 400px">
                         <img style="height: 100%; width:90%" class="theImg" src="{{$post->path}}" alt="" srcset="">
@@ -21,9 +21,16 @@
                     <h3>Comments Section.</h3>
                     @foreach ($comments as $comment)
                         <div class="comment-detail">
+                            <div class="avatar_container">
+                                <div class="avatar_img"><i class="fas fa-user-tie" style='color:rgb(249, 155, 170); font-size:30px;'></i></div>
+                                <div class='comment-content'>
+                                    <p class="theTime">
+                                        <span class='theEmail'>{{$comment->email}}</span> <span style="font-size: 20px; font-weight:bolder">.</span> &nbsp;{{$comment->created_at->diffForHumans()}}
+                                    </p>
+                                    {{$comment->comment}}
+                                </div>
+                            </div>
                             
-                            <p class='comment-content'>{{$comment->comment}}</p>
-                            <p class="theTime"><span class='theEmail'>{{$comment->email}}</span> @ {{$comment->created_at}}</p>
                         </div>
                         <hr>
                     @endforeach
@@ -34,12 +41,13 @@
                 {!! Form::open(['action' => 'App\Http\Controllers\CommentsController@store']) !!}
                     <div class="form-group enter-comment">
                         {!! Form::hidden('post_id' , $post->id) !!}
+                        {!! Form::hidden('post_slug' , $post->slug) !!}
                         {!! Form::label('comment' , 'Enter Comment' ) !!}
                         {!! Form::text('comment' ,null , ['class' =>'comment form-control'] ) !!}
                     </div>
                     <div class="form-group enter-comment">
                         
-                        {!! Form::label('email' , 'Enter Email' ) !!}
+                        {!! Form::label('email' ,'Avatar Name' ) !!}
                         {!! Form::text('email' ,null , ['class' =>'email form-control'] ) !!}
                     </div>
 
@@ -70,7 +78,7 @@
             </div>
 
             <div class="col-lg-4 col-sm-12 col-xs-12">
-                <h3>Recent Blog Posts</h3>
+                <h3 class="recent_title">Recent Blog Posts</h3>
 
                     @foreach ($allPosts as $recent)
                         <div class="index-img-container" style="height: 200px"  >
