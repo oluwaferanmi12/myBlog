@@ -31,7 +31,12 @@ class PostsController extends Controller
         $post = Post::orderBy('id' , 'desc')->limit(5)->get();
         
 
-        $recents =Post::orderBy('id' , 'desc')->limit(5)->get();
+        $recents =Post::orderBy('id' , 'desc')->limit(6)->get();
+        // $recents = Post::with('comments')->first()->post_id;
+
+
+        // dd($recents);
+        
         return view('posts.index' , compact('post' , 'recents'));
     }
 
@@ -82,7 +87,7 @@ class PostsController extends Controller
     public function show($slug)
     {
         //
-        $allPosts =Post::orderBy('id' , 'desc')->limit(10)->get();
+        $allPosts =Post::orderBy('id' , 'desc')->limit(11)->get();
         
         $post = Post::where('slug' , $slug)->first();
         

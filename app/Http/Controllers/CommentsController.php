@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
+use Session;
 
 class CommentsController extends Controller
 {
@@ -16,7 +17,7 @@ class CommentsController extends Controller
     public function index()
     {
         //
-        return "This is the HomePage for the Comment";
+        
     }
 
     /**
@@ -37,7 +38,13 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
+
         //
+
+        if (!isset($request->commment) || !isset($request->email)){
+            Session::flash('comment_error' , "All fields are required");
+            return back();
+        }
         $input = $request->all();
         $post_slug = $input['post_slug'];
         $post = Post::where('slug', $post_slug)->first();

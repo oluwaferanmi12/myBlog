@@ -100,3 +100,11 @@
     background-color: #fff;
 }
 
+.recent_title_link:hover{
+    cursor: pointer !important;
+    color: #ef9b8e !important;
+}
+
+.recent_header_link:hover{
+    color: #ef9b8e !important;
+}

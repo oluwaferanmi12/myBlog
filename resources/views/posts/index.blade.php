@@ -13,7 +13,7 @@
                     <div class="index-img-container" style="height:400px">
                     <img class="theImg" style="height: 100%;" src="{{$posts->path}}" alt="" srcset="">
                     </div>
-                    <h3><a style='color:black; text-decoration:none; font-weight:bold' href="{{route('posts.show' , $posts->id)}}">{{$posts->title}} </a>  </h3> 
+                    <h3><a style='color:black; text-decoration:none; font-weight:bold' href="{{route('posts.show', $posts->slug)}}">{{$posts->title}} </a>  </h3> 
                     <p>{{ substr(strip_tags($posts->body) , 0, 300) }} ...</p>
                     <p style="padding-bottom:0px; margin-bottom:0px;">
                         <i class="far fa-clock"></i>  Posted {{$posts->created_at->diffForHumans()}}</p>
@@ -56,17 +56,26 @@
             <div class="col-lg-4 sec-col">
                 <h3 class="trending-head"><span>Trending</span></h3>
 
-                @foreach ($recents as $recent)
-                    <div class="recent-container">
-                        <div class="index-img-container" style="height: 250px">
-                        <img style="height: 100%; " src="{{$recent->path}}" alt="" srcset="">
-                        </div>
+                {{-- @foreach ($recents as $recent)
+                    
 
-                        <div style="font-size:24px; text-align:center"><a style='color:black; text-decoration:none;' href="{{route('posts.show' , $recent->id)}}">{{$recent->title}} </a></div>
+
+                @endforeach --}}
+
+                @for ($i = 1; $i < 6; $i++)
+                    <div class="recent-container" style="padding: 0px">
+                        @if ($i == 1)
+                            <div class="index-img-container" style="height:250px">
+                                <img style="height: 100%; " src="{{$recents[$i]->path}}" alt="" srcset="">
+                            </div>
+                        @endif
+
+                        
+                        <div  style="font-size:24px; text-align:center"><a
+                            class="recent_title_link" style='color:black; text-decoration:none;' href="{{route('posts.show' , $recents[$i]->id)}}">{{$recents[$i]->title}} </a></div>
+                        <hr>
                     </div>
-
-
-                @endforeach
+                @endfor
             </div>
         </div>
 

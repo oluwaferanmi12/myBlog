@@ -41,10 +41,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md  navbar-light  " style="background-color: #ecdfe5 ">
+        <nav class="navbar navbar-expand-md  navbar-light  " style="background-color: #ef9b8e ">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="color: #011638">
-                    myBlog
+                    <div style="width: 200px; height:100px"><img src="{{asset('images/pamelawhite.png')}}" alt="" style="width: 100%; height: 100%"></div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -58,9 +58,9 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         
-                            <li class="nav-social"><i style="color: #011638; font-size:20px;" class="fab fa-facebook"></i></li>
-                            <li class="nav-social"><i style="color:#011638; font-size:20px;" class="fab fa-twitter"></i></li>
-                            <li class="nav-social"><i style="color: #011638; font-size:20px;" class="fab fa-instagram"></i></li>
+                            <li class="nav-social"><i style="color:white; font-size:20px;" class="fab fa-facebook"></i></li>
+                            <li class="nav-social"><i style="color:white; font-size:20px;" class="fab fa-twitter"></i></li>
+                            <li class="nav-social"><i style="color: white; font-size:20px;" class="fab fa-instagram"></i></li>
                             
                         
 

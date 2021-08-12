@@ -20,7 +20,7 @@
                 <div class="show-comments">
                     <h3>Comments Section.</h3>
                     @foreach ($comments as $comment)
-                        <div class="comment-detail">
+                    <div class="comment-detail">
                             <div class="avatar_container">
                                 <div class="avatar_img"><i class="fas fa-user-tie" style='color:rgb(249, 155, 170); font-size:30px;'></i></div>
                                 <div class='comment-content'>
@@ -33,12 +33,17 @@
                             
                         </div>
                         <hr>
-                    @endforeach
+                        @endforeach
+                        
+                    </div>
+                    
+                    
+                    {!! Form::open(['action' => 'App\Http\Controllers\CommentsController@store']) !!}
 
-                </div>
+                    @if (Session::has('comment_error'))
+                        <div style="width: 100%; background-color:rgb(255, 127, 149); color:white; padding:10px; text-align:center;">{{Session::get('comment_error')}}</div>
+                    @endif
 
-
-                {!! Form::open(['action' => 'App\Http\Controllers\CommentsController@store']) !!}
                     <div class="form-group enter-comment">
                         {!! Form::hidden('post_id' , $post->id) !!}
                         {!! Form::hidden('post_slug' , $post->slug) !!}
@@ -80,15 +85,32 @@
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h3 class="recent_title">Recent Blog Posts</h3>
 
+                @if (count($allPosts) < 6)
+                
+
                     @foreach ($allPosts as $recent)
                         <div class="index-img-container" style="height: 200px"  >
                             <img src="{{$recent->path}}" alt="" srcset="" style="height: 100%; width:100%">
                         </div>
 
                         <h3 style="padding-bottom: 30px"><a style='color:black; text-decoration:none;' href="{{route('posts.show' , $recent->id)}}">{{$recent->title}} </a>  </h3>
-
-
                     @endforeach
+                @else
+                
+                    @for ($i = 1; $i < 6; $i++)
+                        @if ($i == 1)
+                                <div class="index-img-container" style="height: 200px"  >
+                                <img src="{{$allPosts[$i]->path}}" alt="" srcset="" style="height: 100%; width:100%">
+                            </div>
+                        @endif
+
+                        <h3 class="recent_header" style="text-align:center;"><a
+                            class="recent_header_link" style='color:black; text-decoration:none;' href="{{route('posts.show' , $allPosts[$i]->slug)}}">{{$allPosts[$i]->title}} </a>  </h3>
+                        <hr>
+                    @endfor
+                @endif
+
+
             </div>
         </div>
     </div>
