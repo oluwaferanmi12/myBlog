@@ -58,9 +58,16 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         
-                            <li class="nav-social"><i style="color:white; font-size:30px;" class="fab fa-facebook"></i></li>
-                            <li class="nav-social"><i style="color:white; font-size:30px;" class="fab fa-twitter"></i></li>
-                            <li class="nav-social"><i style="color: white; font-size:30px;" class="fab fa-instagram"></i></li>
+                            <a href="https://www.facebook.com/pamelagists/" target="_blank">
+                                <li class="nav-social"><i style="color:white; font-size:30px;" class="fab fa-facebook"></i>
+                                </li>
+                            </a>
+                            <a href="https://wwww.pamesther.com" target="_blank">
+                                <li class="nav-social"><i style="color:white; font-size:30px;" class="fab fa-twitter"></i></li>
+                            </a>
+                           <a target="_blank" href="https://Instagram.com/pamelaestherblogofficial" >
+                                <li class="nav-social"><i style="color: white; font-size:30px;" class="fab fa-instagram"></i></li>
+                           </a>
                             
                         
 
