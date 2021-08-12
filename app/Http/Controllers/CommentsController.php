@@ -40,19 +40,21 @@ class CommentsController extends Controller
     {
 
         //
+        // dd($request->all());
 
-        if (!isset($request->commment) || !isset($request->email)){
-            Session::flash('comment_error' , "All fields are required");
-            return back();
+        if (isset($request->comment)  && isset($request->email)){
+            $input = $request->all();
+            $post_slug = $input['post_slug'];
+            $post = Post::where('slug', $post_slug)->first();
+            $comment = Comment::create($input);
+            // $post->comments()->save($comment);
+            
+            
+            return redirect('posts/'.$post_slug);
         }
-        $input = $request->all();
-        $post_slug = $input['post_slug'];
-        $post = Post::where('slug', $post_slug)->first();
-        $comment = Comment::create($input);
-        // $post->comments()->save($comment);
-        
-        
-        return redirect('posts/'.$post_slug);
+
+        Session::flash('comment_error' , "All fields are required");
+        return back();
 
         
     }
