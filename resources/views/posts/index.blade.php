@@ -65,7 +65,7 @@
                 @if (count($recents) <= 5)
                     @foreach ($recents as $recent)
                         <div  style="font-size:24px; text-align:center"><a
-                            class="recent_title_link" style='color:black; text-decoration:none;' href="{{route('posts.show' , $recents[$i]->id)}}">{{$recents[$i]->title}} </a>
+                            class="recent_title_link" style='color:black; text-decoration:none;' href="{{route('posts.show' , $recents[$i]->id)}}">{{$recent->title}} </a>
                         </div>
                         <hr>
                     @endforeach
