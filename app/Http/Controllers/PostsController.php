@@ -28,6 +28,7 @@ class PostsController extends Controller
     public function index()
     {
         //
+        
         $post = Post::orderBy('id' , 'desc')->limit(5)->get();
         
 
@@ -88,11 +89,8 @@ class PostsController extends Controller
     {
         //
         $allPosts =Post::orderBy('id' , 'desc')->limit(11)->get();
-        
         $post = Post::where('slug' , $slug)->first();
-        
         $comments = $post->comments()->orderBy('id' , 'desc')->get();
-        
         return view('posts.show' , compact('post' , 'allPosts' , 'comments'));
     }
 

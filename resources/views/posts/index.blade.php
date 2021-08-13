@@ -62,20 +62,36 @@
 
                 @endforeach --}}
 
-                @for ($i = 1; $i < 6; $i++)
-                    <div class="recent-container" style="padding: 0px">
-                        @if ($i == 1)
-                            <div class="index-img-container" style="height:250px">
-                                <img style="height: 100%; " src="{{$recents[$i]->path}}" alt="" srcset="">
-                            </div>
-                        @endif
-
-                        
+                @if (count($recents) <= 5)
+                    @foreach ($recents as $recent)
                         <div  style="font-size:24px; text-align:center"><a
-                            class="recent_title_link" style='color:black; text-decoration:none;' href="{{route('posts.show' , $recents[$i]->id)}}">{{$recents[$i]->title}} </a></div>
+                            class="recent_title_link" style='color:black; text-decoration:none;' href="{{route('posts.show' , $recents[$i]->id)}}">{{$recents[$i]->title}} </a>
+                        </div>
                         <hr>
-                    </div>
-                @endfor
+                    @endforeach
+                
+                @else 
+
+                    @for ($i = 1; $i < 6; $i++)
+                        <div class="recent-container" style="padding: 0px">
+                            @if ($i == 1)
+                                <div class="index-img-container" style="height:250px">
+                                    <img style="height: 100%; " src="{{$recents[$i]->path}}" alt="" srcset="">
+                                </div>
+                            @endif
+
+                            
+                            <div  style="font-size:24px; text-align:center"><a
+                                class="recent_title_link" style='color:black; text-decoration:none;' href="{{route('posts.show' , $recents[$i]->id)}}">{{$recents[$i]->title}} </a>
+                            </div>
+                            <hr>
+                        </div>
+                    @endfor
+
+                @endif
+
+                
+
             </div>
         </div>
 
